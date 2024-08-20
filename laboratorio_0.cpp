@@ -52,5 +52,8 @@ int main() {
     int longitudFija = longitudCadena(cadenaFija);
     std::cout << "La longitud de la cadena fija es: " <<longitudFija<< std::endl;
 
+    std::cout << "La longitud de la cadena fija es: " <<longitudFija<< std::endl;
+
+
     return 0;
 }
