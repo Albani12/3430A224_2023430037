@@ -40,11 +40,11 @@ void removePaciente(Paciente*& head, const std::string& nombre) {
     }
 }
 
-// Función para imprimir todas las personas en la lista.
+// Función para imprimir todas los pacientes en la lista.
 void printPaciente(const Paciente* head) {
     const Paciente* current = head;
     while (current != nullptr) {
-        std::cout << current->nombre << " is " << current->edad << " years old." << std::endl;
+        std::cout << current->nombre << " tiene " << current->edad << " anos" << std::endl;
         current = current->next;
     }
 }
@@ -52,16 +52,16 @@ void printPaciente(const Paciente* head) {
 int main() {
     Paciente* head = nullptr;
 
-    // Agregar personas a la lista
-    addPaciente(head, "Alice", 25, 50, 1.45);
-    addPaciente(head, "Bob", 30, 60, 1.75);
-    addPaciente(head, "Charlie", 28, 75, 1.60);
+    // Agregar pacientes a la lista
+    addPaciente(head, "Diana", 25, 40, 1.55);
+    addPaciente(head, "Emiliano", 37, 62.7, 1.85);
+    addPaciente(head, "Yonnathan", 30, 70.5, 1.70);
 
     // imprimir la lista
     printPaciente(head);
 
-    // Eliminar una persona
-    removePaciente(head, "Bob");
+    // Eliminar un paciente
+    removePaciente(head, "Emiliano");
 
     // Imprime la lista actualizada
     printPaciente(head);
