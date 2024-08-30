@@ -10,7 +10,7 @@ struct Paciente {
     Paciente* next;
 };
 
-// Función para agregar una nueva persona a la lista
+// Función para agregar un nuevo paciente a la lista
 void addPaciente(Paciente*& head, const std::string& nombre, int edad,double peso, double altura) {
     Paciente* newPaciente = new Paciente();
     newPaciente->nombre = nombre;
