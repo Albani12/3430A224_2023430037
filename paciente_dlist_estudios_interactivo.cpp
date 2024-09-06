@@ -3,13 +3,16 @@
 #include <sstream>
 #include <string>
 
-// Definición de la estructura "Paciente"
+// Estructura para representar un paciente
 struct Paciente {
     std::string nombre;
     int edad;
     double peso;   // en kilogramos
     double altura; // en metros
-    Paciente* next;
+    double a1c;    // Nivel de azúcar en la sangre (A1C)
+    double imc;    // Índice de Masa Corporal (IMC)
+    int prioridad; // Valor de prioridad calculado
+    Paciente* next; // Puntero al siguiente paciente en la lista
 };
 
 // Función para agregar un nuevo paciente a la lista
