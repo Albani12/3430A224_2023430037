@@ -60,21 +60,29 @@ void mostrarArreglo(int A[], int N) {
     cout << endl;
 }
 
-int main() {
-    int N;
-    char VER;
-    //Entrada del numero de elementos
-    cout << "Ingrese el numero de elementos a ordenar (N, maximo " << MAX << "): ";
-    cin >> N;
-
-    if (N <= 0 || N > MAX) {
-        cerr << "El valor de N debe ser positivo y menor o igual a " << MAX << "." << endl;
+int main(int argc, char* argv[]) {
+    //validacion de numero de argumentoas
+    //uso de argv y arcv
+    if (argc != 3) {
+        cerr << "Uso: " << argv[0] << " <N> <VER>" << endl;
+        cerr << "N: numero de elementos a ordenar (positivo, maximo " << MAX << ")" << endl;
+        cerr << "VER: 'S' o 'N' para mostrar o no el contenido del arreglo" << endl;
         return 1;
     }
 
-    //Preguntar si el usuario desea mostrar los arreglos
-    cout << "Desea ver los contenidos del arreglo antes y despues del ordenamiento? (S/N): ";
-    cin >> VER;
+    //validacion de N
+    int N = atoi(argv[1]); //convertir argumento a entero
+    if (N <= 0 || N > MAX) {
+        cerr << "Error: El valor de N debe ser positivo y menor o igual a " << MAX << "." << endl;
+        return 1;
+    }
+
+    //validacion de VER
+    char VER = argv[2][0]; //tomar el primer caracter del segundo argumento
+    if (VER != 'S' && VER != 's' && VER != 'N' && VER != 'n') {
+        cerr << "Error: El parametro VER debe ser 'S' o 'N'." << endl;
+        return 1;
+    }
 
     int A[MAX];
 
@@ -100,7 +108,7 @@ int main() {
     auto start = chrono::high_resolution_clock::now(); // Inicio del tiempo
     seleccion(A, N);
     auto end = chrono::high_resolution_clock::now(); // Fin del tiempo
-    chrono::duration<double> tiempoSeleccion = (end - start)*10000000000; // Tiempo en nanosegundos para que pueda salir un valor en pantalla
+    chrono::duration<double,milli> tiempoSeleccion = (end - start)*10000000000; // Tiempo en nanosegundos para que pueda salir un valor en pantalla
 
     //mostrar el arreglo ordenado si VER es 'S' o 's'
     if (VER == 'S' || VER == 's') {
@@ -113,7 +121,7 @@ int main() {
     start = chrono::high_resolution_clock::now(); //inicia del tiempo
     quicksort(B, 0, N - 1);
     end = chrono::high_resolution_clock::now(); //termina el tiempo
-    chrono::duration<double> tiempoQuicksort = (end - start)*10000000000; //Tiempo en nanosegundos para que pueda salir un valor en pantalla
+    chrono::duration<double, milli> tiempoQuicksort = (end - start)*10000000000; //Tiempo en nanosegundos para que pueda salir un valor en pantalla
 
     //Mostrar el arreglo ordenado si VER es 'S' o 's'
     if (VER == 'S' || VER == 's') {
@@ -124,6 +132,3 @@ int main() {
 
     return 0;
 }
-
-
-
